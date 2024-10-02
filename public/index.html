@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pedido</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        form { max-width: 400px; margin: auto; }
+        input { width: 100%; margin-bottom: 10px; padding: 10px; }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Realiza tu Pedido</h1>
+    <form method="post" action="#" onsubmit="return sendOrder();">
+        <input placeholder="Nombre" type="text" id="nombre" required>
+        <input placeholder="Email" type="email" id="email" required>
+        <input placeholder="Producto" type="text" id="producto" required>
+        <input placeholder="Cantidad" type="number" id="cantidad" required>
+        <input type="submit" value="Enviar Pedido">
+    </form>
+
+    <script>
+        var sendOrder = function() {
+            var nombre = document.getElementById("nombre").value;
+            var email = document.getElementById("email").value;
+            var producto = document.getElementById("producto").value;
+            var cantidad = document.getElementById("cantidad").value;
+
+            $.ajax({
+                type: "POST",
+                url: "/sendOrder",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    nombre: nombre,
+                    email: email,
+                    producto: producto,
+                    cantidad: cantidad
+                }),
+                success: function(response) {
+                    alert("Pedido enviado con éxito.");
+                },
+                error: function(error) {
+                    alert("Hubo un error al enviar el pedido.");
+                }
+            });
+
+            return false; // Evitar el envío del formulario
+        };
+    </script>
+</body>
+</html>

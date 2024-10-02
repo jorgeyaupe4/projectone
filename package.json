@@ -1,0 +1,14 @@
+{
+  "name": "tu-nombre-de-proyecto",
+  "version": "0.0.1",
+  "description": "Una simple aplicación Express",
+  "main": "index.js", // O "server.js" si tu archivo principal se llama así
+  "scripts": {
+    "start": "node index.js" // Cambia esto si tu archivo principal es server.js
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0"
+  }
+}
